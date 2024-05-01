@@ -6,7 +6,6 @@ Scripts to convert Random House Webster's Unabridged Dictionary to [DICT format]
 Conversion script depends on `pychm` and `beautifulsoup4`.
 
 ```sh
-make download
 sudo make install
 ```
 
