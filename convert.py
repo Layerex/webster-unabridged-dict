@@ -82,6 +82,7 @@ def format_entry(html: str):
         if len(word_parts[0]) == 1: # Single letter
             word = word_parts[0]
         elif word_parts[1].capitalize() in ("The", "A", "An", "'d", "L'", "La", "Il"):
+            word = word_parts[0]
             definition = (f"{word_parts[1]} {word_parts[0]}\n" + definition).replace("\n", "\n ")
 
     print(f":{word}:{definition}")
