@@ -14,10 +14,10 @@ database ${DICTNAME} {
 endef
 export CONFIG
 
-make: ${DICTSOURCE}
+${DICTNAME}.index ${DICTNAME}.dict: ${DICTSOURCE}
 	python3 convert.py ${DICTSOURCE} | dictfmt --utf8 --allchars -s ${DICTNAME_FULL} -j ${DICTNAME}
 
-download:
+${DICTSOURCE} download:
 	curl -o ${DICTSOURCE} "${IPFS_PROVIDER}/ipfs/bafykbzacecko7s2t2lv6mhlaj5b4dvkiranpfqjxwu5jnbookbdy7xr2dm3d4"
 
 install: ${DICTNAME}.index ${DICTNAME}.dict
