@@ -89,12 +89,11 @@ def format_entry(html: str, html_format: bool = False) -> tuple[str, str]:
 .m2{margin-left: 5px;}
 .m3{margin-left: 10px;}
 .m4{margin-left: 15px;}
-.p{font-style: italic}
 .col_darkred{color: darkred}
 .col_darkgray{color: darkgray}
 .col_brown{color: brown}
 .col_blue{color: blue}
-.col_indigo{color: indigo}</style>""" + formatted
+.col_indigo{color: indigo}</style>""" + f"<p>{word}</p>{formatted}"
     else:
         definition = formatted.replace("&lt;", "<").replace("&gt;", ">").replace(" —", "\n—")
 
@@ -106,18 +105,14 @@ def format_entry(html: str, html_format: bool = False) -> tuple[str, str]:
         elif word_parts[1].capitalize() in ("The", "A", "An", "'d", "L'", "La", "Il"):
             word = word_parts[0]
             full_word = f"{word_parts[1]} {word_parts[0]}"
-            if html_format:
-                definition = f"<p>{full_word}</p>{definition}"
-            else:
+            if not html_format:
                 definition = f"{full_word}\n{definition}".replace("\n", "\n ")
 
     yield [word], definition
     if alternate_words:
-        if html_format:
-            alternate_definition = f"<p>{word}</p>{definition}"
-        else:
-            alternate_definition = f"{word}\n{definition}"
-        yield alternate_words, alternate_definition
+        if not html_format:
+            definition = f"{word}\n{definition}"
+        yield alternate_words, definition
 
 
 def main():
