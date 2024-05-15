@@ -145,7 +145,8 @@ def main():
             if len(argv) == 4:
                 s.tag("label", argv[3])
             for words, definition in entries:
-                s.add(definition.encode("utf-8"), *words, content_type="text/html; charset=utf-8")
+                for word in words:
+                    s.add(definition.encode("utf-8"), word, content_type="text/html; charset=utf-8")
     else:  # jargon file
         for words, definition in entries:
             for word in words:
