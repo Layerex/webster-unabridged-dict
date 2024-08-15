@@ -15,9 +15,11 @@ database ${DICTNAME} {
 endef
 export CONFIG
 
-${DICTNAME}.index ${DICTNAME}.dict.dz: ${DICTSOURCE} convert.py
-	python3 convert.py ${DICTSOURCE} | dictfmt --utf8 --allchars -s ${DICTNAME_FULL} -j ${DICTNAME}
+${DICTNAME}.dict.dz: ${DICTNAME}.dict
 	dictzip ${DICTNAME}.dict
+
+${DICTNAME}.index ${DICTNAME}.dict: ${DICTSOURCE} convert.py
+	python3 convert.py ${DICTSOURCE} | dictfmt --utf8 --allchars -s ${DICTNAME_FULL} -j ${DICTNAME}
 
 ${DICTSOURCE} download:
 	curl -o ${DICTSOURCE} "${IPFS_PROVIDER}/ipfs/bafykbzacecko7s2t2lv6mhlaj5b4dvkiranpfqjxwu5jnbookbdy7xr2dm3d4"
