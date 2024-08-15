@@ -66,7 +66,7 @@ def format_entry(html: str, html_format: bool = False) -> tuple[str, str]:
 
     def alternate(tag: str):
         for word in tag.find("b").text.removesuffix(";").split(", "):
-            alternate_words.append(word)
+            alternate_words.append(unidecode(word))
 
     escape("35", "span", class_="col_indigo", cb=alternate)
     if not html_format:
