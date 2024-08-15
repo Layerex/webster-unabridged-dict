@@ -38,6 +38,6 @@ ${SLOB_FILE} slob: ${DICTSOURCE} convert.py
 	python3 convert.py ${DICTSOURCE} ${SLOB_FILE} ${DICTNAME_FULL}
 
 clean:
-	rm -f ${DICTNAME}.dict.dz ${DICTNAME}.index ${SLOB_FILE}
+	rm -f ${DICTNAME}.dict ${DICTNAME}.dict.dz ${DICTNAME}.index ${SLOB_FILE}
 
 .PHONY: download install uninstall slob clean
