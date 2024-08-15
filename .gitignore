@@ -1,3 +1,5 @@
 *.chm
+*.dict
 *.dict.dz
 *.index
+*.slob
